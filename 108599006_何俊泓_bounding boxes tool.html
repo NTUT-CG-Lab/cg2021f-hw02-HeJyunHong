@@ -15,6 +15,13 @@
 		a {
 			color: #08f;
 		}
+
+		.three {
+			position: absolute;
+			top: 0;
+			left: 0;
+			z-index: -1;
+		}
 	</style>
 </head>
 
@@ -109,6 +116,7 @@
 		function init() {
 
 			const container = document.createElement('div');
+			container.classList.add("three");
 			document.body.appendChild(container);
 			let scale = 30;
 			camera = new THREE.OrthographicCamera(window.innerWidth / scale / - 2, window.innerWidth / scale / 2, window.innerHeight / scale / 2, window.innerHeight / scale / - 2, 0.1, 1000);
@@ -345,12 +353,12 @@
 						scene.remove( lineList[0] );
 						material = new THREE.LineBasicMaterial( { color: 'red' } );
 						points = [];
-						points.push( new THREE.Vector3( 0, intersects[0].point.y + 1.3/camera.zoom, 10 ) );
-						points.push( new THREE.Vector3( 1.8, intersects[0].point.y + 1.3/camera.zoom, 10 ) );
+						points.push( new THREE.Vector3( 0, intersects[0].point.y, 10 ) );
+						points.push( new THREE.Vector3( 1.8, intersects[0].point.y, 10 ) );
 						geometry = new THREE.BufferGeometry().setFromPoints( points );
 						line = new THREE.Line( geometry, material );
 						lineList[0] = line;
-						lineLabel[0] = intersects[0].point.y + 1.3/camera.zoom;
+						lineLabel[0] = intersects[0].point.y;
 						scene.add( line );
 						renderer.render( scene, camera );
 						break;
@@ -373,12 +381,12 @@
 						scene.remove( lineList[2] );
 						material = new THREE.LineBasicMaterial( { color: 'red' } );
 						points = [];
-						points.push( new THREE.Vector3( 0, intersects[0].point.y + 1.3/camera.zoom, 10 ) );
-						points.push( new THREE.Vector3( 1.8, intersects[0].point.y + 1.3/camera.zoom, 10 ) );
+						points.push( new THREE.Vector3( 0, intersects[0].point.y, 10 ) );
+						points.push( new THREE.Vector3( 1.8, intersects[0].point.y, 10 ) );
 						geometry = new THREE.BufferGeometry().setFromPoints( points );
 						line = new THREE.Line( geometry, material );
 						lineList[2] = line;
-						lineLabel[2] = intersects[0].point.y + 1.3/camera.zoom;
+						lineLabel[2] = intersects[0].point.y;
 						scene.add( line );
 						renderer.render( scene, camera );
 						break;
